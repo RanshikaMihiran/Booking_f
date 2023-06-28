@@ -1,4 +1,5 @@
 import Navbar from "../../components/navbar/Navbar";
+import Featured from "../../components/navbar/featured/Featured";
 
 
 
@@ -10,10 +11,11 @@ const Home = () => {
     <div> 
 
       <Navbar/>
-
-      {/* <Navbar/> */}
-
       <Header/>
+      <div className="homeContainer">
+        <Featured/>
+        
+      </div>
     </div>
   );
 };
