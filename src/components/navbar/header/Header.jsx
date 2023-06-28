@@ -7,7 +7,11 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import {format} from "date-fns";
 
+<<<<<<< HEAD
 const Header = () => {
+=======
+const Header = ({type}) => {
+>>>>>>> 7946752 (edit navbar)
   // open the Calender
   const [openDate,setOpenDate] = useState(false)
   
@@ -64,6 +68,11 @@ const Header = () => {
         <span>Airport taxis</span>
         </div>
       </div>
+<<<<<<< HEAD
+=======
+        { type !== "list" &&
+          <>
+>>>>>>> 7946752 (edit navbar)
         <h1 className="headderTitle">Find your next stay.</h1>
         <p className="headerDescription">Search low prices on hotels, homes and much more...</p>
         <button className="headerBtn">Sign in / Register</button>
@@ -92,8 +101,13 @@ const Header = () => {
           </div>
           <div className="headerSearchItems">
           <FontAwesomeIcon icon={faPerson} className="headerIcon"/>
+<<<<<<< HEAD
           <span className="headerSearchText">{`${options.adults} adult ·  ${options.children} children · ${options.room} room`}</span>
             <div className="options">
+=======
+          <span  onClick={()=>setOpenOptions(!openOptions)}className="headerSearchText">{`${options.adults} adult ·  ${options.children} children · ${options.room} room`}</span>
+            { openOptions && <div className="options">
+>>>>>>> 7946752 (edit navbar)
               <div className="optionItem">
                 <span className="optionText">Adult</span>
                 <div className="optionCounter">
@@ -123,12 +137,20 @@ const Header = () => {
                 <button className="optionCounterButton"onClick={()=>handleOption("room" , "i")}>+</button>
                 </div>
               </div>
+<<<<<<< HEAD
             </div>
+=======
+            </div>}
+>>>>>>> 7946752 (edit navbar)
           </div>
           <div className="headerSearchItems">
           <button className="headerBtn">Search</button>
           </div>
+<<<<<<< HEAD
         </div>
+=======
+        </div> </>}
+>>>>>>> 7946752 (edit navbar)
         </div>
     </div>
   );
