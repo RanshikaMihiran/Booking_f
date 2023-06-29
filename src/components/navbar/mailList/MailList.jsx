@@ -6,7 +6,7 @@ const MailList = () => {
         <h1 className="mailTilte"> Save time, save money!</h1>
         <span className="mainDecs">Sign up and we'll send the best deels to you</span>
         <div className="mailInputContainer">
-            <input type="text" placeholder="Ypur Email"/>
+            <input type="text" placeholder="Your Email here."/>
             <button>Subscribe</button>
         </div>
     </div>
