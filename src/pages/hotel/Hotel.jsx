@@ -1,11 +1,19 @@
 import "./hotel.css"
 import Navbar from "../../components/navbar/Navbar"
 import Header from "../../components/navbar/header/Header"
+import MailList from "../../components/navbar/mailList/MailList"
+import Footer from "../../components/navbar/footer/Footer"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLocation } from "@fortawesome/free-solid-svg-icons"
+import { faCircleArrowLeft, faCircleArrowRight, faCircleXmark, faLocation } from "@fortawesome/free-solid-svg-icons"
+import { useState } from "react"
 
 
 const Hotel = () => {
+  const [slideNUmber, setSlideNUmber] = useState(0);
+  const [open, setOpen] = useState(false);
+
+
+
   const photos = [
     {
       src : "/Images/Hotel 1/1.jpg"
@@ -45,12 +53,37 @@ const Hotel = () => {
     },
   ];
 
+  const handleOpen =(i)=>{
+    setSlideNUmber(i);
+    setOpen(true);
+  }
+
+  const handleMove  = (direction) =>{
+    let newSlideNumber ;
+
+    if(direction==="l"){
+      newSlideNumber = slideNUmber ===0 ? 5 : slideNUmber-1
+    }else{
+      newSlideNumber = slideNUmber ===5 ? 0 : slideNUmber+1
+          }
+      setSlideNUmber(newSlideNumber)
+
+  }
+
 
   return (
     <div>
       <Navbar/>
       <Header type = "list"/>
       <div className="hotelContainer">
+       {open && <div className="slider">
+          <FontAwesomeIcon icon={faCircleXmark} className="close" onClick={()=>setOpen(false)}/>
+          <FontAwesomeIcon icon={faCircleArrowLeft} className="arrow" onClick={()=>handleMove("l")} />
+          <div className="sliderWrapper">
+            <img src={photos[slideNUmber].src} alt="" className="sliderImg" />
+          </div>
+          <FontAwesomeIcon icon={faCircleArrowRight} className="arrow" onClick={()=>handleMove("r")}/>
+        </div>}
         <div className="hotelWrapper">
           <button className="bookNow">Reserve or Book now!</button>
           <h1 className="hotelTitle"> Kingsford Residences</h1>
@@ -65,9 +98,9 @@ const Hotel = () => {
           Kingsford Residences has been welcoming Booking.com guests since 11 Apr 2017.
           </span>
           <div className="hotelImages">
-            {photos.map(photo=>(
+            {photos.map((photo,i)=>(
               <div className="hotelImgWrapper">
-                <img src={photo.src} alt="" className="hotelImg" />
+                <img onClick={()=>handleOpen(i)} src={photo.src} alt="" className="hotelImg" />
               </div>
             ))}
 
@@ -95,6 +128,8 @@ const Hotel = () => {
             </div>
           </div>
         </div>
+        <MailList/>
+        <Footer/>
       </div>
     </div>
   )
